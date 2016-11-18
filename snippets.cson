@@ -23,10 +23,11 @@
 '.source.jsx':
   'Component':
     'prefix': 'comp'
+    'leftLabel': 'Componente react'
     'body': """
 /*
  * Project: ${1}
- * Module: ${4}
+ * Module: ${2}
  * vim:ft=javascript.jsx:
  * @flow
  */
@@ -41,7 +42,7 @@ class ${3} extends React.Component {
   render() {
     return (
       <div className="$3">
-        $3
+        $3$4
       </div>
 	  )
   }
@@ -50,3 +51,7 @@ class ${3} extends React.Component {
 export default $3
 
     """
+  'Log':
+    'prefix': 'log'
+    'body': "console.log('$1');$2"
+    'leftLabel': 'Console log'
