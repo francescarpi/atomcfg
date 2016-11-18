@@ -19,3 +19,34 @@
 # If you are unfamiliar with CSON, you can read more about it in the
 # Atom Flight Manual:
 # http://flight-manual.atom.io/using-atom/sections/basic-customization/#_cson
+
+'.source.jsx':
+  'Component':
+    'prefix': 'comp'
+    'body': """
+/*
+ * Project: ${1}
+ * Module: ${4}
+ * vim:ft=javascript.jsx:
+ * @flow
+ */
+import React, {PropTypes} from 'react'
+
+type Props = {}
+
+class ${3} extends React.Component {
+
+  props: Props
+
+  render() {
+    return (
+      <div className="$3">
+        $3
+      </div>
+	  )
+  }
+}
+
+export default $3
+
+    """
