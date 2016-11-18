@@ -1,0 +1,15 @@
+"*":
+  core:
+    autoHideMenuBar: true
+    packagesWithKeymapsDisabled: [
+      "symbols-view"
+    ]
+    projectHome: "/home/farpi/workspace/"
+  editor:
+    fontFamily: "Meslo\\ LG\\ S\\ DZ\\ for\\ Powerline"
+    fontSize: 15
+  "exception-reporting":
+    userId: "9a069ef6-f94a-9b02-a10e-924fa1c2ae1f"
+  "vim-mode-plus":
+    statusBarModeStringStyle: "long"
+    useClipboardAsDefaultRegister: true
