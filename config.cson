@@ -1,14 +1,21 @@
 "*":
   core:
     autoHideMenuBar: true
+    closeEmptyWindows: false
+    destroyEmptyPanes: false
     packagesWithKeymapsDisabled: [
       "symbols-view"
     ]
     projectHome: "/home/farpi/workspace/"
     telemetryConsent: "no"
+    themes: [
+      "atom-material-ui"
+      "atom-material-syntax"
+    ]
   editor:
     fontFamily: "Meslo\\ LG\\ S\\ DZ\\ for\\ Powerline"
     fontSize: 15
+    showInvisibles: true
   "exception-reporting":
     userId: "9a069ef6-f94a-9b02-a10e-924fa1c2ae1f"
   "vim-mode-plus":
