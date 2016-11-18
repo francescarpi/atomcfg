@@ -5,6 +5,7 @@
       "symbols-view"
     ]
     projectHome: "/home/farpi/workspace/"
+    telemetryConsent: "no"
   editor:
     fontFamily: "Meslo\\ LG\\ S\\ DZ\\ for\\ Powerline"
     fontSize: 15
@@ -13,3 +14,5 @@
   "vim-mode-plus":
     statusBarModeStringStyle: "long"
     useClipboardAsDefaultRegister: true
+  welcome:
+    showOnStartup: false
