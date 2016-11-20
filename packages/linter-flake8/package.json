@@ -2,39 +2,42 @@
   "_args": [
     [
       {
-        "raw": "/tmp/d-1161018-17158-1cevp00.p9evpr2j4i/package.tgz",
+        "raw": "/tmp/d-1161020-3989-jukcmt.xlvnpqr529/package.tgz",
         "scope": null,
         "escapedName": null,
         "name": null,
-        "rawSpec": "/tmp/d-1161018-17158-1cevp00.p9evpr2j4i/package.tgz",
-        "spec": "/tmp/d-1161018-17158-1cevp00.p9evpr2j4i/package.tgz",
+        "rawSpec": "/tmp/d-1161020-3989-jukcmt.xlvnpqr529/package.tgz",
+        "spec": "/tmp/d-1161020-3989-jukcmt.xlvnpqr529/package.tgz",
         "type": "local"
       },
-      "/tmp/apm-install-dir-1161018-17158-efhpvr.dri4ahh0k9"
+      "/tmp/apm-install-dir-1161020-3989-1e9ow4y.s6rvbo6r"
     ]
   ],
-  "_from": "../d-1161018-17158-1cevp00.p9evpr2j4i/package.tgz",
-  "_id": "linter-flake8@2.0.2",
+  "_from": "../d-1161020-3989-jukcmt.xlvnpqr529/package.tgz",
+  "_id": "linter-flake8@2.1.0",
   "_inCache": true,
   "_location": "/linter-flake8",
   "_phantomChildren": {},
   "_requested": {
-    "raw": "/tmp/d-1161018-17158-1cevp00.p9evpr2j4i/package.tgz",
+    "raw": "/tmp/d-1161020-3989-jukcmt.xlvnpqr529/package.tgz",
     "scope": null,
     "escapedName": null,
     "name": null,
-    "rawSpec": "/tmp/d-1161018-17158-1cevp00.p9evpr2j4i/package.tgz",
-    "spec": "/tmp/d-1161018-17158-1cevp00.p9evpr2j4i/package.tgz",
+    "rawSpec": "/tmp/d-1161020-3989-jukcmt.xlvnpqr529/package.tgz",
+    "spec": "/tmp/d-1161020-3989-jukcmt.xlvnpqr529/package.tgz",
     "type": "local"
   },
   "_requiredBy": [
     "#USER"
   ],
-  "_resolved": "file:../d-1161018-17158-1cevp00.p9evpr2j4i/package.tgz",
-  "_shasum": "d2d69ef302adb40881162a18a435e1d5b8abc571",
+  "_resolved": "file:../d-1161020-3989-jukcmt.xlvnpqr529/package.tgz",
+  "_shasum": "2fa99ff303957d43efa801c8ad6a521820ba5f71",
   "_shrinkwrap": null,
-  "_spec": "/tmp/d-1161018-17158-1cevp00.p9evpr2j4i/package.tgz",
-  "_where": "/tmp/apm-install-dir-1161018-17158-efhpvr.dri4ahh0k9",
+  "_spec": "/tmp/d-1161020-3989-jukcmt.xlvnpqr529/package.tgz",
+  "_where": "/tmp/apm-install-dir-1161020-3989-1e9ow4y.s6rvbo6r",
+  "activationHooks": [
+    "language-python:grammar-used"
+  ],
   "bugs": {
     "url": "https://github.com/AtomLinter/linter-flake8/issues"
   },
@@ -103,9 +106,9 @@
   },
   "description": "Atom linter plugin for Python, using flake8",
   "devDependencies": {
-    "eslint": "^3.8.0",
-    "eslint-config-airbnb-base": "^9.0.0",
-    "eslint-plugin-import": "^2.0.1"
+    "eslint": "^3.9.1",
+    "eslint-config-airbnb-base": "^10.0.0",
+    "eslint-plugin-import": "^2.1.0"
   },
   "engines": {
     "atom": ">=1.9.0 <2.0.0"
@@ -155,7 +158,7 @@
     "lint": "eslint .",
     "test": "apm test"
   },
-  "version": "2.0.2",
+  "version": "2.1.0",
   "_atomModuleCache": {
     "version": 1,
     "dependencies": [

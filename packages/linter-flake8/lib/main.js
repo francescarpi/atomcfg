@@ -12,6 +12,7 @@ const parseRegex = /(\d+):(\d+):\s(([A-Z])\d{2,3})\s+(.*)/g;
 
 const extractRange = ({ code, message, lineNumber, colNumber, textEditor }) => {
   let result;
+  // Make the given line 0-indexed
   const line = lineNumber - 1;
   switch (code) {
     case 'C901':
@@ -33,16 +34,8 @@ const extractRange = ({ code, message, lineNumber, colNumber, textEditor }) => {
     case 'H501':
       result = rangeHelpers.noLocalsString(textEditor, line);
       break;
-    case 'E999':
-      // E999 - SyntaxError: unexpected EOF while parsing
-
-      // Workaround for https://gitlab.com/pycqa/flake8/issues/237
-      result = {
-        line,
-        col: colNumber - 2,
-      };
-      break;
     default:
+      // By default just correct the column to be 0-indexed
       result = {
         line,
         col: colNumber - 1,
@@ -61,16 +54,9 @@ const extractRange = ({ code, message, lineNumber, colNumber, textEditor }) => {
   try {
     range = helpers.rangeFromLineNumber(textEditor, result.line, result.col);
   } catch (e) {
-    // eslint-disable-next-line no-console
-    console.error(
-      'linter-flake8:: Invalid point encountered in the attached message',
-      {
-        code,
-        message,
-        requestedPoint: result,
-      }
-    );
-    throw Error('linter-flake8:: Invalid point encountered! See console for details.');
+    // rangeFromLineNumber encountered a problem, throw the result and report
+    // to the user.
+    throw result;
   }
 
   return range;
@@ -90,6 +76,56 @@ const applySubstitutions = (givenExecPath, projDir) => {
   return execPath;
 };
 
+const getVersionString = async (versionPath) => {
+  if (!Object.hasOwnProperty.call(getVersionString, 'cache')) {
+    getVersionString.cache = new Map();
+  }
+  if (!getVersionString.cache.has(versionPath)) {
+    getVersionString.cache.set(versionPath,
+      await helpers.exec(versionPath, ['--version']));
+  }
+  return getVersionString.cache.get(versionPath);
+};
+
+const generateInvalidPointTrace = async (execPath, match, filePath, textEditor, point) => {
+  const flake8Version = await getVersionString(execPath);
+  const issueURL = 'https://github.com/AtomLinter/linter-flake8/issues/new';
+  const title = encodeURIComponent(`Flake8 rule '${match[3]}' reported an invalid point`);
+  const body = encodeURIComponent([
+    `Flake8 reported an invalid point for the rule \`${match[3]}\`, ` +
+    `with the messge \`${match[5]}\`.`,
+    '', '',
+    '<!-- If at all possible, please include code that shows this issue! -->',
+    '', '',
+    'Debug information:',
+    `Atom version: ${atom.getVersion()}`,
+    `Flake8 version: \`${flake8Version}\``,
+  ].join('\n'));
+  const newIssueURL = `${issueURL}?title=${title}&body=${body}`;
+  return {
+    type: 'Error',
+    severity: 'error',
+    html: 'ERROR: Flake8 provided an invalid point! See the trace for details. ' +
+      `<a href="${newIssueURL}">Report this!</a>`,
+    filePath,
+    range: helpers.rangeFromLineNumber(textEditor, 0),
+    trace: [
+      {
+        type: 'Trace',
+        text: `Original message: ${match[3]} — ${match[5]}`,
+        filePath,
+        severity: 'info',
+      },
+      {
+        type: 'Trace',
+        text: `Requested point: ${point.line + 1}:${point.col + 1}`,
+        filePath,
+        severity: 'info',
+      },
+    ],
+  };
+};
+
 export default {
   activate() {
     require('atom-package-deps').install('linter-flake8');
@@ -98,52 +134,52 @@ export default {
     this.subscriptions.add(
       atom.config.observe('linter-flake8.disableTimeout', (value) => {
         this.disableTimeout = value;
-      })
+      }),
     );
     this.subscriptions.add(
       atom.config.observe('linter-flake8.projectConfigFile', (value) => {
         this.projectConfigFile = value;
-      })
+      }),
     );
     this.subscriptions.add(
       atom.config.observe('linter-flake8.maxLineLength', (value) => {
         this.maxLineLength = value;
-      })
+      }),
     );
     this.subscriptions.add(
       atom.config.observe('linter-flake8.ignoreErrorCodes', (value) => {
         this.ignoreErrorCodes = value;
-      })
+      }),
     );
     this.subscriptions.add(
       atom.config.observe('linter-flake8.maxComplexity', (value) => {
         this.maxComplexity = value;
-      })
+      }),
     );
     this.subscriptions.add(
       atom.config.observe('linter-flake8.selectErrors', (value) => {
         this.selectErrors = value;
-      })
+      }),
     );
     this.subscriptions.add(
       atom.config.observe('linter-flake8.hangClosing', (value) => {
         this.hangClosing = value;
-      })
+      }),
     );
     this.subscriptions.add(
       atom.config.observe('linter-flake8.executablePath', (value) => {
         this.executablePath = value;
-      })
+      }),
     );
     this.subscriptions.add(
       atom.config.observe('linter-flake8.pycodestyleErrorsToWarnings', (value) => {
         this.pycodestyleErrorsToWarnings = value;
-      })
+      }),
     );
     this.subscriptions.add(
       atom.config.observe('linter-flake8.flakeErrors', (value) => {
         this.flakeErrors = value;
-      })
+      }),
     );
   },
 
@@ -218,20 +254,25 @@ export default {
           const col = Number.parseInt(match[2], 10) || 0;
           const isErr = (match[4] === 'E' && !this.pycodestyleErrorsToWarnings)
             || (match[4] === 'F' && this.flakeErrors);
-          const range = extractRange({
-            code: match[3],
-            message: match[5],
-            lineNumber: line,
-            colNumber: col,
-            textEditor,
-          });
 
-          messages.push({
-            type: isErr ? 'Error' : 'Warning',
-            text: `${match[3]} — ${match[5]}`,
-            filePath,
-            range,
-          });
+          try {
+            const range = extractRange({
+              code: match[3],
+              message: match[5],
+              lineNumber: line,
+              colNumber: col,
+              textEditor,
+            });
+            messages.push({
+              type: isErr ? 'Error' : 'Warning',
+              text: `${match[3]} — ${match[5]}`,
+              filePath,
+              range,
+            });
+          } catch (point) {
+            messages.push(await generateInvalidPointTrace(
+              execPath, match, filePath, textEditor, point));
+          }
 
           match = parseRegex.exec(result.stdout);
         }
