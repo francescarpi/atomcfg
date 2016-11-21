@@ -10,6 +10,7 @@
 #   editor.onDidSave ->
 #     console.log "Saved! #{editor.getPath()}"
 
+# New action for toggle unfold. It can be mapped with ctrl-space
 atom.commands.add 'atom-text-editor', 'editor:toggle-current-row-folding': (event) ->
     editor = @getModel()
     bufferRow = editor.bufferPositionForScreenPosition(editor.getCursorScreenPosition()).row
@@ -17,3 +18,10 @@ atom.commands.add 'atom-text-editor', 'editor:toggle-current-row-folding': (even
       editor.unfoldBufferRow(bufferRow)
     else
       editor.foldBufferRow(bufferRow)
+
+
+# Fold automatically for some file types.
+atom.workspace.observeTextEditors (editor) ->
+  name = editor.getGrammar().name
+  if name is 'JavaScript (JSX)' or name is 'Less'
+    editor.foldAll()

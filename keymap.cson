@@ -33,5 +33,10 @@
 'atom-text-editor':
   'ctrl-b': 'symbols-view:toggle-file-symbols'
 
+'body':
+  'ctrl-q': 'unset!'
+
 '.editor.vim-mode-plus.normal-mode':
   'space': 'editor:toggle-current-row-folding'
+  'ctrl-j': 'editor:add-selection-below'
+  'ctrl-k': 'editor:add-selection-above'
