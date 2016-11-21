@@ -3,15 +3,21 @@
     autoHideMenuBar: true
     closeEmptyWindows: false
     destroyEmptyPanes: false
+    ignoredNames: [
+      ".git"
+      ".hg"
+      ".svn"
+      ".DS_Store"
+      "._*"
+      "Thumbs.db"
+      "*.pyc"
+    ]
+    openEmptyEditorOnStart: false
     packagesWithKeymapsDisabled: [
       "symbols-view"
     ]
     projectHome: "/home/farpi/workspace/"
     telemetryConsent: "no"
-    themes: [
-      "atom-material-ui"
-      "atom-material-syntax"
-    ]
   editor:
     fontFamily: "Meslo\\ LG\\ S\\ DZ\\ for\\ Powerline"
     fontSize: 15
