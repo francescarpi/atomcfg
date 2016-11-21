@@ -27,6 +27,8 @@
     softWrap: true
   "exception-reporting":
     userId: "9a069ef6-f94a-9b02-a10e-924fa1c2ae1f"
+  linter:
+    showErrorPanel: false
   minimap: {}
   "relative-numbers": {}
   "vim-mode-plus":
