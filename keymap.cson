@@ -33,6 +33,7 @@
 'atom-text-editor':
   'ctrl-b': 'symbols-view:toggle-file-symbols'
   'ctrl-n': 'autocomplete-plus:activate'
+  'alt-e': 'emmet:expand-abbreviation'
 
 'body':
   'ctrl-q': 'unset!'
