@@ -20,10 +20,6 @@
     ]
     projectHome: "/home/farpi/workspace/"
     telemetryConsent: "no"
-    themes: [
-      "one-dark-ui"
-      "solarized-light-syntax"
-    ]
   editor:
     fontFamily: "Meslo\\ LG\\ S\\ DZ\\ for\\ Powerline"
     fontSize: 15
