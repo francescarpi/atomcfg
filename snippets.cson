@@ -20,6 +20,7 @@
 # Atom Flight Manual:
 # http://flight-manual.atom.io/using-atom/sections/basic-customization/#_cson
 
+# JSX
 '.source.jsx':
   'Component':
     'prefix': 'comp'
@@ -56,6 +57,7 @@ export default $3
     'body': "console.log($1);$2"
     'leftLabel': 'Console log'
 
+# Javascript
 '.source.js':
   'Comment':
     'prefix': 'com'
@@ -63,5 +65,17 @@ export default $3
 /*****************************************************************************/
 /* $1
 /*****************************************************************************/
+$2
+"""
+
+# Python
+'.source.python':
+  'Sbu':
+    'prefix': 'sbu'
+    'body': """
+#!/usr/bin/env python
+# encoding: utf-8
+# vim:ft=python.django:
+# --------------------------------------------------------------------------
 $2
 """

@@ -25,3 +25,9 @@ atom.commands.add 'atom-text-editor', 'editor:toggle-current-row-folding': (even
 #   name = editor.getGrammar().name
 #   if name is 'JavaScript (JSX)' or name is 'Less' or name is 'Python'
 #     editor.foldAll()
+
+# New action for save and exit of insert mode for vim-mode-plus
+atom.commands.add 'atom-text-editor', 'editor:save-and-exit-of-insert-mode': (event) ->
+  editor = @getModel()
+  atom.commands.dispatch(atom.views.getView(editor), 'vim-mode-plus:reset-normal-mode')
+  atom.commands.dispatch(atom.views.getView(editor), 'core:save')

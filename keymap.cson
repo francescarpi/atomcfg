@@ -38,6 +38,7 @@
 'body':
   'ctrl-q': 'unset!'
   'ctrl-n': 'unset!'
+  'ctrl-s': 'editor:save-and-exit-of-insert-mode'
 
 '.editor.vim-mode-plus.normal-mode':
   'space': 'editor:toggle-current-row-folding'
