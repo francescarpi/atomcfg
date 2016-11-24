@@ -44,3 +44,7 @@
   'space': 'editor:toggle-current-row-folding'
   'ctrl-j': 'editor:add-selection-below'
   'ctrl-k': 'editor:add-selection-above'
+
+'body atom-text-editor.autocomplete-active':
+  'ctrl-k': 'autocomplete-plus:move-up'
+  'ctrl-j': 'autocomplete-plus:move-down'

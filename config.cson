@@ -1,6 +1,7 @@
 "*":
   "autocomplete-plus":
     enableAutoActivation: false
+    useCoreMovementCommands: false
   core:
     autoHideMenuBar: true
     closeEmptyWindows: false
