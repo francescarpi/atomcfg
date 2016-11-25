@@ -31,6 +31,7 @@
   linter:
     showErrorPanel: false
   minimap: {}
+  "one-dark-ui": {}
   "relative-numbers": {}
   "vim-mode-plus":
     statusBarModeStringStyle: "long"

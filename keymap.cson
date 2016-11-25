@@ -2,6 +2,10 @@
   'ctrl-b': 'symbols-view:toggle-file-symbols'
   'ctrl-n': 'autocomplete-plus:activate'
   'alt-e': 'emmet:expand-abbreviation'
+  'g c': 'unset!'
+
+'atom-text-editor.vim-mode-plus:not(.insert-mode)':
+  'g c c': 'editor:toggle-comment-exit-visual-mode'
 
 'body':
   'ctrl-q': 'unset!'

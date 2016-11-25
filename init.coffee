@@ -31,3 +31,9 @@ atom.commands.add 'atom-text-editor', 'editor:save-and-exit-of-insert-mode': (ev
   editor = @getModel()
   atom.commands.dispatch(atom.views.getView(editor), 'vim-mode-plus:reset-normal-mode')
   atom.commands.dispatch(atom.views.getView(editor), 'core:save')
+
+# New action for toggle comment and exit from vim visual mode
+atom.commands.add 'atom-text-editor', 'editor:toggle-comment-exit-visual-mode': (event) ->
+  editor = @getModel()
+  atom.commands.dispatch(atom.views.getView(editor), 'editor:toggle-line-comments')
+  atom.commands.dispatch(atom.views.getView(editor), 'vim-mode-plus:reset-normal-mode')
