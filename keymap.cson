@@ -21,5 +21,5 @@
   'ctrl-e': 'editor:move-to-end-of-screen-line'
 
 'body atom-text-editor.autocomplete-active':
-  'ctrl-k': 'autocomplete-plus:move-up'
-  'ctrl-j': 'autocomplete-plus:move-down'
+  'ctrl-p': 'autocomplete-plus:move-up'
+  'ctrl-n': 'autocomplete-plus:move-down'
