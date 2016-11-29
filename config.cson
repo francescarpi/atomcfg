@@ -32,6 +32,8 @@
     showErrorPanel: false
   minimap: {}
   "one-dark-ui": {}
+  "project-manager":
+    showPath: false
   "relative-numbers": {}
   "vim-mode-plus":
     ignoreCaseForSearch: true
