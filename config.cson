@@ -32,7 +32,9 @@
     showErrorPanel: false
   minimap: {}
   "one-dark-ui": {}
-  "relative-numbers": {}
+  "relative-numbers":
+    showAbsoluteNumbers: true
+    trueNumberCurrentLine: false
   "vim-mode-plus":
     ignoreCaseForSearch: true
     statusBarModeStringStyle: "long"
