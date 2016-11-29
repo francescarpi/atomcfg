@@ -34,6 +34,7 @@
   "one-dark-ui": {}
   "relative-numbers": {}
   "vim-mode-plus":
+    ignoreCaseForSearch: true
     statusBarModeStringStyle: "long"
     useClipboardAsDefaultRegister: true
   welcome:
