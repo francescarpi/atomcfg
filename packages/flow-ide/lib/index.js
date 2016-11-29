@@ -1,10 +1,12 @@
 /* @flow */
 
 import Path from 'path'
-import { CompositeDisposable } from 'atom'
+import { CompositeDisposable, TextEditor } from 'atom'
 import { exec, findCachedAsync } from 'atom-linter'
 import { shouldTriggerAutocomplete } from 'atom-autocomplete'
 import { INIT_MESSAGE, RECHECKING_MESSAGE, toLinterMessages, injectPosition, toAutocompleteSuggestions } from './helpers'
+import CoverageView from './coverage-view'
+import type { CoverageObject } from './coverage-view'
 
 export default {
   activate() {
@@ -48,6 +50,8 @@ export default {
           if (!configFile) {
             return []
           }
+        } else {
+          return []
         }
 
         const executable = await this.getExecutablePath(fileDirectory)
@@ -83,12 +87,15 @@ export default {
         const filePath = editor.getPath()
         const fileDirectory = Path.dirname(filePath)
         const fileContents = injectPosition(editor.getText(), editor, bufferPosition)
+        let flowOptions = ['autocomplete', '--json', filePath]
 
-        if (this.onlyIfAppropriate) {
-          const configFile = await findCachedAsync(fileDirectory, '.flowconfig')
-          if (!configFile) {
+        const configFile = await findCachedAsync(fileDirectory, '.flowconfig')
+        if (!configFile) {
+          if (this.onlyIfAppropriate) {
             return []
           }
+          const defaultFlowFile = Path.resolve(__dirname, '..', 'vendor', '.flowconfig')
+          flowOptions = ['autocomplete', '--root', defaultFlowFile, '--json', filePath]
         }
 
         // NOTE: Fix for class properties autocompletion
@@ -102,10 +109,10 @@ export default {
 
         let result
         try {
-          result = await exec(await this.getExecutablePath(fileDirectory), ['autocomplete', '--json', filePath], { cwd: fileDirectory, stdin: fileContents })
+          result = await exec(await this.getExecutablePath(fileDirectory), flowOptions, { cwd: fileDirectory, stdin: fileContents })
         } catch (error) {
           if (error.message.indexOf(INIT_MESSAGE) !== -1 || error.message.indexOf(RECHECKING_MESSAGE) !== -1) {
-            return await provider.getSuggestions(editor)
+            return await provider.getSuggestions(params)
           }
           throw error
         }
@@ -114,5 +121,41 @@ export default {
       },
     }
     return provider
+  },
+
+  consumeStatusBar(statusBar: any): void {
+    this.coverageView = new CoverageView()
+    this.coverageView.initialize()
+    this.statusBar = statusBar.addLeftTile({ item: this.coverageView, priority: 10 })
+
+    this.subscriptions.add(atom.workspace.onDidChangeActivePaneItem((item: ?TextEditor): void => {
+      if (item && item instanceof TextEditor) {
+        this.updateCoverage(item)
+      } else {
+        this.coverageView.reset()
+      }
+    }))
+    this.subscriptions.add(atom.workspace.observeTextEditors((textEditor: TextEditor): void => {
+      textEditor.onDidSave(() => this.updateCoverage(textEditor))
+    }))
+  },
+
+  async updateCoverage(textEditor: TextEditor) {
+    const filePath: string = textEditor.getPath()
+    const fileDirectory: string = Path.dirname(filePath)
+
+    const executable: string = await this.getExecutablePath(fileDirectory)
+    try {
+      const result: string = await exec(executable, ['coverage', filePath, '--json'], { cwd: fileDirectory, ignoreExitCode: true })
+        .catch(() => {})
+
+      if (result) {
+        const coverage: CoverageObject = JSON.parse(result)
+        this.coverageView.update(coverage)
+      }
+    } catch (error) {
+      this.coverageView.reset()
+      // Let the linter handle any flow errors.
+    }
   },
 }
