@@ -2,42 +2,43 @@
   "_args": [
     [
       {
-        "raw": "/tmp/d-1161022-6450-eiwezo.ogeewmi/package.tgz",
+        "raw": "/tmp/d-1161029-14301-1jmxrqx.fmul4sra4i/package.tgz",
         "scope": null,
         "escapedName": null,
         "name": null,
-        "rawSpec": "/tmp/d-1161022-6450-eiwezo.ogeewmi/package.tgz",
-        "spec": "/tmp/d-1161022-6450-eiwezo.ogeewmi/package.tgz",
+        "rawSpec": "/tmp/d-1161029-14301-1jmxrqx.fmul4sra4i/package.tgz",
+        "spec": "/tmp/d-1161029-14301-1jmxrqx.fmul4sra4i/package.tgz",
         "type": "local"
       },
-      "/tmp/apm-install-dir-1161022-6450-d04il9.hqed5z5mi"
+      "/tmp/apm-install-dir-1161029-14301-cvbzny.2jm2pousor"
     ]
   ],
-  "_from": "../d-1161022-6450-eiwezo.ogeewmi/package.tgz",
-  "_id": "linter-flake8@2.1.1",
+  "_from": "../d-1161029-14301-1jmxrqx.fmul4sra4i/package.tgz",
+  "_id": "linter-flake8@2.1.2",
   "_inCache": true,
   "_location": "/linter-flake8",
   "_phantomChildren": {},
   "_requested": {
-    "raw": "/tmp/d-1161022-6450-eiwezo.ogeewmi/package.tgz",
+    "raw": "/tmp/d-1161029-14301-1jmxrqx.fmul4sra4i/package.tgz",
     "scope": null,
     "escapedName": null,
     "name": null,
-    "rawSpec": "/tmp/d-1161022-6450-eiwezo.ogeewmi/package.tgz",
-    "spec": "/tmp/d-1161022-6450-eiwezo.ogeewmi/package.tgz",
+    "rawSpec": "/tmp/d-1161029-14301-1jmxrqx.fmul4sra4i/package.tgz",
+    "spec": "/tmp/d-1161029-14301-1jmxrqx.fmul4sra4i/package.tgz",
     "type": "local"
   },
   "_requiredBy": [
     "#USER"
   ],
-  "_resolved": "file:../d-1161022-6450-eiwezo.ogeewmi/package.tgz",
-  "_shasum": "b0421db2b862245d91e5db8150846f9c54d2e5c1",
+  "_resolved": "file:../d-1161029-14301-1jmxrqx.fmul4sra4i/package.tgz",
+  "_shasum": "52931827bfeba03a8c2c35ba507100bb5a37fec6",
   "_shrinkwrap": null,
-  "_spec": "/tmp/d-1161022-6450-eiwezo.ogeewmi/package.tgz",
-  "_where": "/tmp/apm-install-dir-1161022-6450-d04il9.hqed5z5mi",
+  "_spec": "/tmp/d-1161029-14301-1jmxrqx.fmul4sra4i/package.tgz",
+  "_where": "/tmp/apm-install-dir-1161029-14301-cvbzny.2jm2pousor",
   "activationHooks": [
     "language-python:grammar-used",
     "MagicPython:grammar-used",
+    "django-atom:grammar-used",
     "atom-django:grammar-used"
   ],
   "bugs": {
@@ -160,7 +161,7 @@
     "lint": "eslint .",
     "test": "apm test"
   },
-  "version": "2.1.1",
+  "version": "2.1.2",
   "_atomModuleCache": {
     "version": 1,
     "dependencies": [
