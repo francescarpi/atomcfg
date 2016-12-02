@@ -2,39 +2,39 @@
   "_args": [
     [
       {
-        "raw": "/tmp/d-1161029-14301-1jmxrqx.fmul4sra4i/package.tgz",
+        "raw": "/tmp/d-116111-18113-1vt9a3q.mynkceg66r/package.tgz",
         "scope": null,
         "escapedName": null,
         "name": null,
-        "rawSpec": "/tmp/d-1161029-14301-1jmxrqx.fmul4sra4i/package.tgz",
-        "spec": "/tmp/d-1161029-14301-1jmxrqx.fmul4sra4i/package.tgz",
+        "rawSpec": "/tmp/d-116111-18113-1vt9a3q.mynkceg66r/package.tgz",
+        "spec": "/tmp/d-116111-18113-1vt9a3q.mynkceg66r/package.tgz",
         "type": "local"
       },
-      "/tmp/apm-install-dir-1161029-14301-cvbzny.2jm2pousor"
+      "/tmp/apm-install-dir-116111-18113-1f7yiuv.saj6f20529"
     ]
   ],
-  "_from": "../d-1161029-14301-1jmxrqx.fmul4sra4i/package.tgz",
-  "_id": "linter-flake8@2.1.2",
+  "_from": "../d-116111-18113-1vt9a3q.mynkceg66r/package.tgz",
+  "_id": "linter-flake8@2.1.3",
   "_inCache": true,
   "_location": "/linter-flake8",
   "_phantomChildren": {},
   "_requested": {
-    "raw": "/tmp/d-1161029-14301-1jmxrqx.fmul4sra4i/package.tgz",
+    "raw": "/tmp/d-116111-18113-1vt9a3q.mynkceg66r/package.tgz",
     "scope": null,
     "escapedName": null,
     "name": null,
-    "rawSpec": "/tmp/d-1161029-14301-1jmxrqx.fmul4sra4i/package.tgz",
-    "spec": "/tmp/d-1161029-14301-1jmxrqx.fmul4sra4i/package.tgz",
+    "rawSpec": "/tmp/d-116111-18113-1vt9a3q.mynkceg66r/package.tgz",
+    "spec": "/tmp/d-116111-18113-1vt9a3q.mynkceg66r/package.tgz",
     "type": "local"
   },
   "_requiredBy": [
     "#USER"
   ],
-  "_resolved": "file:../d-1161029-14301-1jmxrqx.fmul4sra4i/package.tgz",
-  "_shasum": "52931827bfeba03a8c2c35ba507100bb5a37fec6",
+  "_resolved": "file:../d-116111-18113-1vt9a3q.mynkceg66r/package.tgz",
+  "_shasum": "0aebf8e6990c495ce43b83540f6206c68cc276e6",
   "_shrinkwrap": null,
-  "_spec": "/tmp/d-1161029-14301-1jmxrqx.fmul4sra4i/package.tgz",
-  "_where": "/tmp/apm-install-dir-1161029-14301-cvbzny.2jm2pousor",
+  "_spec": "/tmp/d-116111-18113-1vt9a3q.mynkceg66r/package.tgz",
+  "_where": "/tmp/apm-install-dir-116111-18113-1f7yiuv.saj6f20529",
   "activationHooks": [
     "language-python:grammar-used",
     "MagicPython:grammar-used",
@@ -161,7 +161,7 @@
     "lint": "eslint .",
     "test": "apm test"
   },
-  "version": "2.1.2",
+  "version": "2.1.3",
   "_atomModuleCache": {
     "version": 1,
     "dependencies": [
