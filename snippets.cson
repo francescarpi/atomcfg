@@ -36,6 +36,9 @@ export default $3
     'prefix': 'log'
     'body': "console.log($1);$2"
     'leftLabel': 'Console log'
+  'Eslint: no-did-mount-set-state':
+    'prefix': 'ndm'
+    'body': '/* eslint react/no-did-mount-set-state: [0] */'
 
 ###############################################################################
 # Javascript
